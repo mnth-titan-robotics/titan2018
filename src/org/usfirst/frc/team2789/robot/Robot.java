@@ -59,6 +59,7 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void autonomousInit() {
+		this.m_driveSys.reset();
 	}
 
 	@Override
@@ -66,10 +67,13 @@ public class Robot extends TimedRobot {
 		// TODO 15: COMMAND THE MOTORS TO DO NOTHING
 		// We don't have an auton right now, so let's make sure the robot doesn't move. Command
 		// the drive system to do nothing.
+		this.m_driveSys.setCommands(0.0,  0.0);
+		this.m_driveSys.update();
 	}
 
 	@Override
 	public void teleopInit() {
+		this.m_driveSys.reset();
 	}
 
 	@Override
@@ -81,8 +85,13 @@ public class Robot extends TimedRobot {
 		// This is the last step for today's assignment. If you finish early, get the roboRIO flashed
 		// for Java and go help the other subsystems. Make sure this gets pushed up to GitHub so I can
 		// review it. Good job!
+		
+		this.m_driveSys.setCommands(1.0, -1.0);
+		this.m_driveSys.update();
+		
 	}
 
+	
 	@Override
 	public void testPeriodic() {}
 }

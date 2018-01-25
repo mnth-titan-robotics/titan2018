@@ -46,16 +46,10 @@ public class DriveSystem extends Subsystem {
 	// Talons. I've gone ahead and provided the method signature for you. Just fill
 	// it out. Remember to map each Talon to its respective channel.
 	public DriveSystem() {
-		m_talonFL = new Talon(RobotMap.TALON_FL);
-		m_talonFR = new Talon(RobotMap.TALON_FR);
-		m_talonBL = new Talon (RobotMap.TALON_BL);
-		m_talonBR = new Talon(RobotMap.TALON_BR);
-		// TODO 07: INITIALIZE VARIABLES
 		// In your constructor, you always want to provide initial values to all of your
 		// member variables. In this case, we want to make sure m_leftCmd and m_rightCmd
 		// are set to 0.0
 		
-		// Example instantiation of Talon mapped to channel RobotMap.CONST_INT
 		this.m_talonBL = new Talon (RobotMap.TALON_BL);
 		this.m_talonBR = new Talon (RobotMap.TALON_BR);
 		this.m_talonFL = new Talon (RobotMap.TALON_FL);
@@ -68,8 +62,8 @@ public class DriveSystem extends Subsystem {
 	// (auton, teleop, disabled), we want to reset some variables to their default
 	// values. In this case, we want to set m_leftCmd and m_rightCmd back to 0.0
 	public void reset() {
-		double m_leftCmd = 0.0;
-		double m_rightCmd = 0.0;
+		this.m_leftCmd = 0.0;
+		this.m_rightCmd = 0.0;
 		
 		
 	}
@@ -83,10 +77,10 @@ public class DriveSystem extends Subsystem {
 	// the two right talons to m_rightCmd. When you're done with this, head back over to
 	// Robot.java
 	public void update() {
-		this.m_talonFL.set(m_leftCmd);
-		this.m_talonBL.set(m_leftCmd);
-		this.m_talonBR.set(m_rightCmd);
-		this.m_talonFR.set(m_rightCmd);
+		this.m_talonFL.set(this.m_leftCmd);
+		this.m_talonBL.set(this.m_leftCmd);
+		this.m_talonBR.set(this.m_rightCmd);
+		this.m_talonFR.set(this.m_rightCmd);
 	}
 	
 	// TODO 09: SETTER METHOD
@@ -99,6 +93,8 @@ public class DriveSystem extends Subsystem {
 	//		leftCmd		- command for the left motor controllers [-1.0, 1.0]
 	//		rightCmd	- command for the right motor controllers [-1.0, 1.0]
 	public void setCommands(double leftCmd, double rightCmd) {
+		this.m_leftCmd = leftCmd;
+		this.m_rightCmd = rightCmd;
 		
 		
 	}
