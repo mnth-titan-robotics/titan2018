@@ -35,40 +35,23 @@ import edu.wpi.first.wpilibj.TimedRobot;
  */
 
 public class Robot extends TimedRobot {
-	// TODO 11: CREATE DRIVESYSTEM OBJECT
-	// Now that we've defined our DriveSystem (hooray!), we need to actually get the robot
-	// to use it. I'll go ahead and set this up for you, but in the future for future
-	// subsystems, you'll be expected to set it up yourself. Note that our new DriveSystem
-	// object class needs to be imported (line 3). Delete this comment when you've read it
 	private DriveSystem m_driveSys;
 	
 	@Override
 	public void robotInit() {
-		// TODO 12: CONSTRUCT THE DRIVESYSTEM
-		// The robotInit() method is run when only once when the robot is turned on and never
-		// again. This is where we want to instantiate the DriveSystem object. I've gone ahead
-		// and done this for you, but you'll be expected to do this for future subsystems.
-		// Delete this comment when you've read it.
+	
 		this.m_driveSys = new DriveSystem();
 	}
 
 	@Override
 	public void disabledInit() {
-		// TODO 13: RE-INITIALIZE THE DRIVESYSTEM
-		// This command is run only once each time we enter the disabled state. When we do, we
-		// want to re-initialize the DriveSystem object. I'll fill this one in. You should
-		// make sure to re-initialize the DriveSystem for each of the other init methods
-		// (autonomousInit(), teleopInit()). Delete this comment when you're done.
+
 		this.m_driveSys.reset();
 	}
 
 	@Override
 	public void disabledPeriodic() {
-		// TODO 14: COMMAND THE MOTORS
-		// disabledPeriodic is a list of commands you want your robot to run through while it's
-		// in the disabled mode. For now, we just want to command it to do nothing. Don't forget
-		// to force it to update as well! I'll fill this one in as an example. Delete this comment
-		// when you've read it.
+	
 		this.m_driveSys.setCommands(0.0, 0.0);
 		
 		this.m_driveSys.update();

@@ -12,8 +12,11 @@ public class RobotMap {
 	//		TALON_FL = 0, TALON_FR = 1, TALON_BL = 2, TALON_BR = 3
 	// An reminder on how to make constants is shown below. Delete it when
 	// you finish this task and head back to DriveSystem.java.
-	public static final int CONST_INT = 0;
-	public static final double CONST_DBL = 0.0;
-	public static final boolean CONST_BOOL = false;
-	public static final String CONST_STR = "";
+	
+		public static final int TALON_FL = 0;
+		public static final int TALON_FR = 1;
+		public static final int TALON_BL = 2;
+		public static final int TALON_BR = 3;
+	
 }
+
