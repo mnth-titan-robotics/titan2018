@@ -7,31 +7,32 @@ import edu.wpi.first.wpilibj.TimedRobot;
 public class Robot extends TimedRobot {
 	// Declare robot subsystems
 	private DriveSystem m_driveSys;
+	private OperatorInterface m_opFace;
 	
 	@Override
 	public void robotInit() {
-		// Construct robot subsystems
+		// TODO: Construct robot subsystems
 		this.m_driveSys = new DriveSystem();
 	}
 
 	@Override
 	public void disabledInit() {
-		// Reset all subsystem states
+		// TODO: Reset all subsystem states
 		this.m_driveSys.reset();
 	}
 
 	@Override
 	public void disabledPeriodic() {
-		// Command the drive system to do nothing
+		// TODO: Command the drive system to do nothing
 		this.m_driveSys.setCommands(0.0, 0.0);
 		
-		// Update all subsystems
+		// Update all actuator subsystems
 		this.m_driveSys.update();
 	}
 
 	@Override
 	public void autonomousInit() {
-		// Reset all subsystem states
+		// TODO: Reset all subsystem states
 		this.m_driveSys.reset();
 	}
 
@@ -40,22 +41,24 @@ public class Robot extends TimedRobot {
 		// Command the drive system to do nothing
 		this.m_driveSys.setCommands(0.0,  0.0);
 		
-		// Update all subsystems
+		// Update all actuator subsystems
 		this.m_driveSys.update();
 	}
 
 	@Override
 	public void teleopInit() {
-		// Reset all subsystem states
+		// TODO: Reset all subsystem states
 		this.m_driveSys.reset();
 	}
 
 	@Override
 	public void teleopPeriodic() {
+		// TODO: Update all sensor subsystems
+		
 		// Command the motors to move for now
 		this.m_driveSys.setCommands(1.0, -1.0);
 		
-		// Update all subsystems
+		// Update all actuator subsystems
 		this.m_driveSys.update();
 	}
 	

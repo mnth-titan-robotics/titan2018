@@ -22,7 +22,10 @@ public class DriveSystem extends Subsystem {
 		this.m_talonBL = new Talon (RobotMap.TALON_BL);
 		this.m_talonBR = new Talon (RobotMap.TALON_BR);
 		this.m_talonFL = new Talon (RobotMap.TALON_FL);
-		this.m_talonFR = new Talon (RobotMap.TALON_FR);	
+		this.m_talonFR = new Talon (RobotMap.TALON_FR);
+		
+		// Reset all values
+		this.reset();
 	}
 	
 	public void reset() {
