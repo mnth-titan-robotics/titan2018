@@ -1,6 +1,7 @@
 package org.usfirst.frc.team2789.robot;
 
 import org.usfirst.frc.team2789.robot.subsystems.DriveSystem;
+import org.usfirst.frc.team2789.robot.subsystems.OperatorInterface;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 
