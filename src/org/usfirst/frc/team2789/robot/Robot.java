@@ -6,25 +6,31 @@ import org.usfirst.frc.team2789.robot.subsystems.OperatorInterface;
 import edu.wpi.first.wpilibj.TimedRobot;
 
 public class Robot extends TimedRobot {
+	private double m_driveCommand;
+	private double m_turnCommand;
+	private double m_leftCmd;
+	private double m_rightCmd;
+	
 	// Declare robot subsystems
 	private DriveSystem m_driveSys;
 	private OperatorInterface m_opFace;
 	
 	@Override
 	public void robotInit() {
-		// TODO: Construct robot subsystems
+		// Construct robot subsystems
 		this.m_driveSys = new DriveSystem();
+		this.m_opFace = new OperatorInterface();
 	}
 
 	@Override
 	public void disabledInit() {
-		// TODO: Reset all subsystem states
-		this.m_driveSys.reset();
+		// Reset all subsystem states
+		this.reset();
 	}
 
 	@Override
 	public void disabledPeriodic() {
-		// TODO: Command the drive system to do nothing
+		// Command the drive system to do nothing
 		this.m_driveSys.setCommands(0.0, 0.0);
 		
 		// Update all actuator subsystems
@@ -33,8 +39,8 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void autonomousInit() {
-		// TODO: Reset all subsystem states
-		this.m_driveSys.reset();
+		// Reset all subsystem states
+		this.reset();
 	}
 
 	@Override
@@ -48,21 +54,44 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void teleopInit() {
-		// TODO: Reset all subsystem states
-		this.m_driveSys.reset();
+		// Reset all subsystem states
+		this.reset();
 	}
 
 	@Override
 	public void teleopPeriodic() {
-		// TODO: Update all sensor subsystems
+		// Update all sensor subsystems
+		this.m_opFace.update();
 		
-		// Command the motors to move for now
-		this.m_driveSys.setCommands(1.0, -1.0);
+		// Get information from sensor subsystems
+		this.m_driveCommand = this.m_opFace.getDriveCmd();
+		this.m_turnCommand = this.m_opFace.getTurnCmd();
+		
+		// Calculations
+		this.m_leftCmd = this.m_driveCommand + this.m_turnCommand;
+		this.m_rightCmd = this.m_driveCommand - this.m_turnCommand;
+		
+		this.m_leftCmd = RobotHelper.limit(this.m_leftCmd, -1.0, 1.0);
+		this.m_rightCmd = RobotHelper.limit(this.m_rightCmd, -1.0, 1.0);
+		
+		// Set information for actuator subsystems
+		this.m_driveSys.setCommands(this.m_leftCmd, this.m_rightCmd);
 		
 		// Update all actuator subsystems
 		this.m_driveSys.update();
 	}
 	
+	public void reset() {
+		this.m_driveCommand = 0.0;
+		this.m_turnCommand = 0.0;
+		this.m_leftCmd = 0.0;
+		this.m_rightCmd = 0.0;
+		
+		this.m_driveSys.reset();
+		this.m_opFace.reset();
+	}
+	
 	@Override
 	public void testPeriodic() {}
 }
+

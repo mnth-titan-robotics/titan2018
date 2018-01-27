@@ -1,13 +1,9 @@
 package org.usfirst.frc.team2789.robot.subsystems;
 
+import org.usfirst.frc.team2789.robot.RobotMap;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Subsystem;
-
-/**
- * I don't think the idea of object-oriented programming has fully stuck yet,
- * so let's do some scaffolding. I've provided a template for this class.
- * See if you can fill in the blanks.
- */
 
 public class OperatorInterface extends Subsystem {
 	// Storage variables
@@ -19,39 +15,31 @@ public class OperatorInterface extends Subsystem {
 	private Joystick m_copilotStick;
 	
 	public OperatorInterface() {
-		// TODO: Construct Joystick objects
-		// Don't forget to specify the channels for the Joysticks in
-		// RobotMap.java. Hint: reference DriveSystem.java's constructor
-		// if you don't remember what to do here.
+		// Create new joysticks
+		this.m_pilotStick = new Joystick (RobotMap.JOYSTICK_PILOT);
+		this.m_copilotStick = new Joystick (RobotMap.JOYSTICK_COPILOT);
+		
+		// Reset storage variables
+		this.reset();
 	}
 	
 	public void reset() {
-		// TODO: Reset your storage variables
-		// Hint: reference DriveSystem.java's reset() method if you don't
-		// remember what to do here
+		this.m_driveCmd = 0.0;
+		this.m_turnCmd = 0.0;
 	}
 	
 	public void update() {
-		// TODO: Update storage variables by reading from the joysticks
-		// Set the value of m_driveCmd to the value of axis 1 on
-		// m_pilotStick. Set the value of m_turnCmd to the value of
-		// axis 5 on m_pilotStick. Use the getRawAxis() function of
-		// the joystick. Since the axes we'll be using are constants,
-		// make sure to define them in RobotMap.java
+		// Retrieve axis values from joysticks
+		this.m_driveCmd = this.m_pilotStick.getRawAxis(RobotMap.DRIVE_AXIS);
+		this.m_turnCmd = this.m_pilotStick.getRawAxis(RobotMap.TURN_AXIS);
 	}
 	
 	public double getDriveCmd() {
-		// TODO: return the value of m_driveCmd
-		// Hint: reference the getBalance() function of your BankAccount
-		// exercise
-		return 0.0;
+		return this.m_driveCmd;
 	}
 	
 	public double getTurnCmd() {
-		// TODO: return the value of m_turnCmd
-		// Hint: reference the getBalance() function of your BankAccount
-		// exercise
-		return 0.0;
+		return this.m_turnCmd;
 	}
 
 	@Override
