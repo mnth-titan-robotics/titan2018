@@ -24,6 +24,12 @@ public class DriveSystem extends Subsystem {
 		this.m_talonFL = new Talon (RobotMap.TALON_FL);
 		this.m_talonFR = new Talon (RobotMap.TALON_FR);
 		
+		// Invert appropriate motors
+		this.m_talonBL.setInverted(RobotMap.INVERT_LEFT);
+		this.m_talonFL.setInverted(RobotMap.INVERT_LEFT);
+		this.m_talonBR.setInverted(RobotMap.INVERT_RIGHT);
+		this.m_talonFR.setInverted(RobotMap.INVERT_RIGHT);
+		
 		// Reset all values
 		this.reset();
 	}

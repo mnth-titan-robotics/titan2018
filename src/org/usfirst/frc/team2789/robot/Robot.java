@@ -68,8 +68,8 @@ public class Robot extends TimedRobot {
 		this.m_turnCommand = this.m_opFace.getTurnCmd();
 		
 		// Calculations
-		this.m_leftCmd = this.m_driveCommand + this.m_turnCommand;
-		this.m_rightCmd = this.m_driveCommand - this.m_turnCommand;
+		this.m_leftCmd = -this.m_driveCommand + this.m_turnCommand;
+		this.m_rightCmd = -this.m_driveCommand - this.m_turnCommand;
 		
 		this.m_leftCmd = RobotHelper.limit(this.m_leftCmd, -1.0, 1.0);
 		this.m_rightCmd = RobotHelper.limit(this.m_rightCmd, -1.0, 1.0);

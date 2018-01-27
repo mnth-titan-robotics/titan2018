@@ -14,4 +14,8 @@ public class RobotMap {
 	// OperatorInterface joystick axes
 	public static final int DRIVE_AXIS = 1;
 	public static final int TURN_AXIS = 4;
+	
+	//Inverts motor direction
+	public static final boolean INVERT_LEFT = false;
+	public static final boolean INVERT_RIGHT = false;
 }
