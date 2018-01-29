@@ -17,5 +17,5 @@ public class RobotMap {
 	
 	//Inverts motor direction
 	public static final boolean INVERT_LEFT = false;
-	public static final boolean INVERT_RIGHT = false;
+	public static final boolean INVERT_RIGHT = true;
 }
