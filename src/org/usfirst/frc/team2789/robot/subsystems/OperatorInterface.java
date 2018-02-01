@@ -13,6 +13,11 @@ public class OperatorInterface extends Subsystem {
 	 * will be booleans. Let's name them as follows:
 	 * 		m_fireMainCyl, m_fireExtCyl
 	 */
+	
+	//Climber variables
+	boolean m_fireMainCyl;
+	boolean m_fireExtCyl;
+	
 	// Storage variables
 	private double m_driveCmd;
 	private double m_turnCmd;
@@ -37,6 +42,9 @@ public class OperatorInterface extends Subsystem {
 	public void reset() {
 		this.m_driveCmd = 0.0;
 		this.m_turnCmd = 0.0;
+		this.m_fireExtCyl= false;
+		this.m_fireMainCyl= false;
+		
 	}
 	
 	public void update() {
@@ -51,7 +59,11 @@ public class OperatorInterface extends Subsystem {
 		 * 		BTN_EXT_CYL_FWD = 1
 		 * 		BTN_EXT_CYL_REV = 2
 		 * 
-		 * The buttons on the gamepad are numbered as such:
+		 **/
+		
+		
+		
+		 /** The buttons on the gamepad are numbered as such:
 		 * 
 		 * 		  3
 		 * 		2   1
@@ -79,7 +91,7 @@ public class OperatorInterface extends Subsystem {
 		 * 		// 	3. BTN_EXT_CYL_FWD is pressed: the cylinder is extended
 		 *  	// 	4. Both buttons are pressed: the cylinder is retracted; we want this to 
 		 *  	//		be its default state
-		 */
+		 **/
 	}
 	
 	public double getDriveCmd() {
@@ -95,11 +107,11 @@ public class OperatorInterface extends Subsystem {
 	 * Fill in the blanks below:
 	 */
 	public boolean getFireMainCyl() {
-		// your code here
+		return this.m_fireMainCyl;// your code here
 	}
 	
 	public boolean getFireExtCyl() {
-		// your code here
+		return this.m_fireExtCyl;// your code here
 	}
 
 	@Override

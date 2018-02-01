@@ -23,4 +23,9 @@ public class RobotMap {
 	public static final int DS_MAIN_CYL_REV=1;
 	public static final int DS_EXT_CYL_FWD=2;
 	public static final int DS_EXT_CYL_REV=3;
+	
+	//CLIMBER VALUES
+	public static final int BTN_MAIN_CYL = 3;
+	public static final int BTN_EXT_CYL_FWD = 1;
+	public static final int BTN_EXT_CYL_REV = 2;
 }

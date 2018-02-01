@@ -54,6 +54,10 @@ public class Robot extends TimedRobot {
 	// Declare robot subsystems
 	private DriveSystem m_driveSys;
 	private OperatorInterface m_opFace;
+	private Object m_fireMainCyl;
+	private Object m_fireExtCyl;
+	private Object m_compressor;
+	private Object m_climber;
 	
 	@Override
 	public void robotInit() {
@@ -65,6 +69,9 @@ public class Robot extends TimedRobot {
 		// Construct robot subsystems
 		this.m_driveSys = new DriveSystem();
 		this.m_opFace = new OperatorInterface();
+		this.m_climber = new Climber();
+		this.m_compressor = new Compressor();
+		
 	}
 
 	@Override
@@ -78,6 +85,7 @@ public class Robot extends TimedRobot {
 		 * this alone.
 		 */
 	}
+	
 
 	@Override
 	public void disabledPeriodic() {
@@ -98,6 +106,7 @@ public class Robot extends TimedRobot {
 		 * We want the compressor running in auton. Start it here.
 		 * 		this.m_compressor.start();
 		 */
+		this.m_compressor.start();
 	}
 
 	@Override
@@ -119,6 +128,7 @@ public class Robot extends TimedRobot {
 		 * We want the compressor running in teleop. Start it here.
 		 * 		this.m_compressor.start();
 		 */
+		this.m_compressor.start();
 	}
 
 	@Override
@@ -140,6 +150,11 @@ public class Robot extends TimedRobot {
 		 * Then, let's get the values here using this.m_opFace.getFireMainCyl()
 		 * and this.m_opface.getFireExtCyl()
 		 */
+		this.m_fireMainCyl();
+		this.m_fireExtCyl();
+		this.m_opFace.getFireMainCyl();
+		this.m_opface.getFireExtCyl();
+		
 		// Get information from sensor subsystems
 		this.m_driveCommand = this.m_opFace.getDriveCmd();
 		this.m_turnCommand = this.m_opFace.getTurnCmd();
@@ -157,6 +172,9 @@ public class Robot extends TimedRobot {
 		 * this.m_climber.fireExtCyl() methods to tell the climber
 		 * what we want it to do when we update it.
 		 */
+		 this.m_climber.fireMainCyl();
+		 this.m_climber.fireExtCyl();
+		
 		// Set information for actuator subsystems
 		this.m_driveSys.setCommands(this.m_leftCmd, this.m_rightCmd);
 		
@@ -168,15 +186,22 @@ public class Robot extends TimedRobot {
 		 */
 		// Update all actuator subsystems
 		this.m_driveSys.update();
+		((Climber) this.m_climber).update();
 	}
 	
+	private void m_fireExtCyl() {
+		// TODO Auto-generated method stub
+		
+	}
+
 	public void reset() {
 		// Reset storage variables
 		this.m_driveCommand = 0.0;
 		this.m_turnCommand = 0.0;
 		this.m_leftCmd = 0.0;
 		this.m_rightCmd = 0.0;
-		
+		this.m_fireMainCyl= 0.0;
+		this.m_fireExtCyl= 0.0;
 		/**
 		 * TODO 06: RESET THE CLIMBER
 		 * We want to reset the climber every time we reset the subsystems.
@@ -184,7 +209,8 @@ public class Robot extends TimedRobot {
 		// Reset subsystems
 		this.m_driveSys.reset();
 		this.m_opFace.reset();
-		
+		this.m_fireMainCyl.reset();
+		this.m_fireExtCyl.reset();
 		/**
 		 * TODO 07: STOP THE COMPRESSOR
 		 * We want to default the compressor to be stopped. We'll manually start it
@@ -193,6 +219,11 @@ public class Robot extends TimedRobot {
 		 */
 	}
 	
+	private Climber m_fireMainCyl() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	@Override
 	public void testPeriodic() {}
 }
