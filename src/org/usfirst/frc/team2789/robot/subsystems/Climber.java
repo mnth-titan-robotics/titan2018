@@ -6,45 +6,64 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Climber extends Subsystem {
-	private DoubleSolenoid.Value m_mainCylValue;
-	private DoubleSolenoid.Value m_extCylValue;
 	
+	// Storage variables for piston commands
+	private DoubleSolenoid.Value m_mainCylCmd;
+	private DoubleSolenoid.Value m_extCylCmd;
+	
+	// DoubleSolenoids to control cylinders
 	private DoubleSolenoid m_mainCyl;
 	private DoubleSolenoid m_extCyl;
 	
 	public Climber() {
-		this.m_mainCyl= new DoubleSolenoid(RobotMap.DS_MAIN_CYL_FWD,RobotMap.DS_MAIN_CYL_REV);
-		this.m_extCyl= new DoubleSolenoid(RobotMap.DS_EXT_CYL_FWD,RobotMap.DS_EXT_CYL_REV);
+		// Construct DoubleSolenoids with corresponding channels
+		this.m_mainCyl = new DoubleSolenoid(
+				RobotMap.DS_MAIN_CYL_FWD,
+				RobotMap.DS_MAIN_CYL_REV);
+		this.m_extCyl = new DoubleSolenoid(
+				RobotMap.DS_EXT_CYL_FWD,
+				RobotMap.DS_EXT_CYL_REV);
 		
+		// Reset all values
 		this.reset();
 	}
 	
-	public void update() {
-		this.m_mainCyl.set(this.m_mainCylValue);
-		this.m_extCyl.set(this.m_extCylValue);
+	public void reset() {
+		// Reset piston commands to retract
+		this.m_mainCylCmd = DoubleSolenoid.Value.kReverse;
+		this.m_extCylCmd = DoubleSolenoid.Value.kReverse;	
 	}
 	
-	public void reset() {
-		this.m_mainCylValue=DoubleSolenoid.Value.kReverse;
-		this.m_extCylValue=DoubleSolenoid.Value.kReverse;	
+	public void update() {
+		// Update actuators with commanded values
+		this.m_mainCyl.set(this.m_mainCylCmd);
+		this.m_extCyl.set(this.m_extCylCmd);
 	}
 	
 	public void fireMainCyl(boolean fire) {
-		if(fire) {
-			this.m_mainCylValue= DoubleSolenoid.Value.kForward;
-		}
-		else {
-			this.m_mainCylValue= DoubleSolenoid.Value.kReverse;
-		}		
+		this.m_mainCylCmd = fire ? DoubleSolenoid.Value.kForward : DoubleSolenoid.Value.kReverse;
+		
+		// This does the same thing as all of this code:
+		//
+		// if(fire) {
+		//	 this.m_mainCylCmd= DoubleSolenoid.Value.kForward;
+		// }
+		// else {
+		//	 this.m_mainCylCmd= DoubleSolenoid.Value.kReverse;
+		// }
 	}
 	
 	public void fireExtCyl(boolean fire) {
-		if(fire) {
-			this.m_extCylValue= DoubleSolenoid.Value.kForward;
-		}
-		else {
-			this.m_extCylValue= DoubleSolenoid.Value.kReverse;
-		}
+		this.m_extCylCmd = fire ? DoubleSolenoid.Value.kForward : DoubleSolenoid.Value.kReverse;
+		
+		// This does the same thing as all of this code:
+		//
+		// if(fire) {
+		//	 this.m_extCylCmd= DoubleSolenoid.Value.kForward;
+		// }
+		// else {
+		//	this.m_extCylCmd= DoubleSolenoid.Value.kReverse;
+		// }
 	}
 
 	@Override
