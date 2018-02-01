@@ -18,4 +18,9 @@ public class RobotMap {
 	//Inverts motor direction
 	public static final boolean INVERT_LEFT = false;
 	public static final boolean INVERT_RIGHT = true;
+	
+	public static final int DS_MAIN_CYL_FWD=0;
+	public static final int DS_MAIN_CYL_REV=1;
+	public static final int DS_EXT_CYL_FWD=2;
+	public static final int DS_EXT_CYL_REV=3;
 }
