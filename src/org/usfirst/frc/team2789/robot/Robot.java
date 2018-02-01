@@ -6,6 +6,7 @@ import org.usfirst.frc.team2789.robot.subsystems.OperatorInterface;
 import edu.wpi.first.wpilibj.TimedRobot;
 
 public class Robot extends TimedRobot {
+	// Storage variables
 	private double m_driveCommand;
 	private double m_turnCommand;
 	private double m_leftCmd;
