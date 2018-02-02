@@ -10,14 +10,9 @@ public class OperatorInterface extends Subsystem {
 	// Storage variables
 	private double m_driveCmd;
 	private double m_turnCmd;
-	/**
-	 * TODO 12: CREATE CLIMBER STORAGE VARIABLES
-	 * Your solution:
-	 * // Climber variables
-	 * boolean m_fireMainCyl;
-	 * boolean m_fireExtCyl;
-	 */
-	// Correct solution:
+	
+	
+	// Climber Storage Variables:
 	private boolean m_fireMainCyl;
 	private boolean m_fireExtCyl;
 	
@@ -71,6 +66,16 @@ public class OperatorInterface extends Subsystem {
 		 *  	// 	4. Both buttons are pressed: the cylinder is retracted; we want this to 
 		 *  	//		be its default state
 		 */
+		
+		this.m_fireMainCyl = this.m_pilotStick.getRawButton(RobotMap.BTN_MAIN_CYL);
+		
+		if (this.m_pilotStick.getRawButton(RobotMap.BTN_EXT_CYL_REV)) {
+			this.m_fireExtCyl= false;
+		}
+		else if (this.m_pilotStick.getRawButton(RobotMap.BTN_EXT_CYL_FWD)) {
+			this.m_fireExtCyl= true;
+		}
+		
 	}
 	
 	public double getDriveCmd() {

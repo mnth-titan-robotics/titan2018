@@ -19,15 +19,10 @@ public class Robot extends TimedRobot {
 	// Declare robot subsystems
 	private DriveSystem m_driveSys;
 	private OperatorInterface m_opFace;
-	/**
-	 * TODO 03: DECLARE NEW OBJECTS
-	 * Your solution:
-	 * private Object m_fireMainCyl;
-	 * private Object m_fireExtCyl;
-	 * private Object m_compressor;
-	 * private Object m_climber;
-	 */
-	// Correct solution:
+	
+	
+	
+	// Declares new objects:
 	private Climber m_climber;
 	private Compressor m_compressor;
 	
@@ -89,15 +84,8 @@ public class Robot extends TimedRobot {
 		// Update all sensor subsystems
 		this.m_opFace.update();
 		
-		/**
-		 * TODO 16: USE CLIMBER COMMAND METHODS
-		 * Your solution:
-		 * this.m_fireMainCyl();
-		 * this.m_fireExtCyl();
-		 * this.m_opFace.getFireMainCyl();
-		 * this.m_opface.getFireExtCyl();
-		 */
-		// Correct solution:
+	
+		// Use climber command methods:
 		this.m_fireMainCyl = this.m_opFace.getFireMainCyl();
 		this.m_fireExtCyl = this.m_opFace.getFireExtCyl();
 		// Also see lines 16 and 17 where I created these variables. I
@@ -114,13 +102,8 @@ public class Robot extends TimedRobot {
 		this.m_leftCmd = RobotHelper.limit(this.m_leftCmd, -1.0, 1.0);
 		this.m_rightCmd = RobotHelper.limit(this.m_rightCmd, -1.0, 1.0);
 		
-		/**
-		 * TODO 17: COMMAND THE CLIMBER
-		 * Your solution:
-		 * this.m_climber.fireMainCyl();
-		 * this.m_climber.fireExtCyl();
-		 */
-		// Correct solution:
+	
+		// Commands the climber:
 		this.m_climber.fireMainCyl(this.m_fireMainCyl);
 		this.m_climber.fireExtCyl(this.m_fireExtCyl);
 		
@@ -129,12 +112,9 @@ public class Robot extends TimedRobot {
 		
 		// Update all actuator subsystems
 		this.m_driveSys.update();
-		/**
-		 * TODO 18: UPDATE THE CLIMBER
-		 * Your solution:
-		 * ((Climber) this.m_climber).update();
-		 */
-		// Correct solution:
+		
+		
+		// Updates climber:
 		this.m_climber.update();
 		// Why was your solution technically not wrong? In your attempt,
 		// You declared m_climber as an Object (see line 28), but constructed
@@ -161,21 +141,13 @@ public class Robot extends TimedRobot {
 		// Reset subsystems
 		this.m_driveSys.reset();
 		this.m_opFace.reset();
-		/**
-		 * TODO 06: RESET THE CLIMBER
-		 * Your solution:
-		 * this.m_fireMainCyl.reset();
-		 * this.m_fireExtCyl.reset();
-		 */
-		// Correct solution:
+		
+		
+		// resets climber:
 		this.m_climber.reset();
 		
-		/**
-		 * TODO 07: STOP THE COMPRESSOR
-		 * Your solution:
-		 * <nothing>
-		 */
-		// Correct solution:
+	
+		// Stops the compressor:
 		this.m_compressor.stop();
 	}
 
