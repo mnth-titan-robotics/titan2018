@@ -6,21 +6,20 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class OperatorInterface extends Subsystem {
-	/**
-	 * TODO 12: CREATE CLIMBER STORAGE VARIABLES
-	 * We now need climber storage variables that we read from the
-	 * controller. Since we'll be using buttons, the variables
-	 * will be booleans. Let's name them as follows:
-	 * 		m_fireMainCyl, m_fireExtCyl
-	 */
-	
-	//Climber variables
-	boolean m_fireMainCyl;
-	boolean m_fireExtCyl;
 	
 	// Storage variables
 	private double m_driveCmd;
 	private double m_turnCmd;
+	/**
+	 * TODO 12: CREATE CLIMBER STORAGE VARIABLES
+	 * Your solution:
+	 * // Climber variables
+	 * boolean m_fireMainCyl;
+	 * boolean m_fireExtCyl;
+	 */
+	// Correct solution:
+	private boolean m_fireMainCyl;
+	private boolean m_fireExtCyl;
 	
 	// Joystick objects
 	private Joystick m_pilotStick;
@@ -35,16 +34,11 @@ public class OperatorInterface extends Subsystem {
 		this.reset();
 	}
 	
-	/**
-	 * TODO 13: RESET CLIMBER STORAGE VARIABLES
-	 * Set m_fireMainCyl and m_fireExtCyl to a default value of false
-	 */
 	public void reset() {
 		this.m_driveCmd = 0.0;
 		this.m_turnCmd = 0.0;
 		this.m_fireExtCyl= false;
 		this.m_fireMainCyl= false;
-		
 	}
 	
 	public void update() {
@@ -54,21 +48,6 @@ public class OperatorInterface extends Subsystem {
 		
 		/**
 		 * TODO 14: RETRIEVE CLIMBER VALUES FROM JOYSTICKS
-		 * Create button mappings in RobotMap.java:
-		 * 		BTN_MAIN_CYL = 3
-		 * 		BTN_EXT_CYL_FWD = 1
-		 * 		BTN_EXT_CYL_REV = 2
-		 * 
-		 **/
-		
-		
-		
-		 /** The buttons on the gamepad are numbered as such:
-		 * 
-		 * 		  3
-		 * 		2   1
-		 * 		  0
-		 * 
 		 * Read the buttons using this.m_pilotStick.getRawButton(RobotMap....).
 		 * This function returns a boolean (true/false) for the button you request.
 		 * Use this information and the following logic to update the climber commands
@@ -91,7 +70,7 @@ public class OperatorInterface extends Subsystem {
 		 * 		// 	3. BTN_EXT_CYL_FWD is pressed: the cylinder is extended
 		 *  	// 	4. Both buttons are pressed: the cylinder is retracted; we want this to 
 		 *  	//		be its default state
-		 **/
+		 */
 	}
 	
 	public double getDriveCmd() {
@@ -102,16 +81,12 @@ public class OperatorInterface extends Subsystem {
 		return this.m_turnCmd;
 	}
 	
-	/**
-	 * TODO 15: GETTER METHODS FOR CLIMBER COMMANDS
-	 * Fill in the blanks below:
-	 */
 	public boolean getFireMainCyl() {
-		return this.m_fireMainCyl;// your code here
+		return this.m_fireMainCyl;
 	}
 	
 	public boolean getFireExtCyl() {
-		return this.m_fireExtCyl;// your code here
+		return this.m_fireExtCyl;
 	}
 
 	@Override
