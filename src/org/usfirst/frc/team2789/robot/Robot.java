@@ -203,5 +203,6 @@ public class Robot extends TimedRobot {
  * Why should the Climber motor storage variable be a boolean?
  * 
  * Your answer:
+ * It should be a boolean because the rest of the climber mech uses boolean and we are not keeping complete control of it we are turning it off and on. 
  * 
  */
