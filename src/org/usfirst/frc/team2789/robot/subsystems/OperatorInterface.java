@@ -14,6 +14,7 @@ public class OperatorInterface extends Subsystem {
 	// Climber Storage Variables:
 	private boolean m_fireMainCyl;
 	private boolean m_fireExtCyl;
+	private boolean m_climbOn;
 	
 	// Joystick objects
 	private Joystick m_pilotStick;
@@ -39,6 +40,7 @@ public class OperatorInterface extends Subsystem {
 		// Retrieve axis values from joysticks
 		this.m_driveCmd = this.m_pilotStick.getRawAxis(RobotMap.DRIVE_AXIS);
 		this.m_turnCmd = this.m_pilotStick.getRawAxis(RobotMap.TURN_AXIS);
+		this.m_climbOn = this.m_pilotStick.getRawButton(RobotMap.BTN_CLIMB_ON);
 		
 		// Retrieve climber pneumatic commands from joysticks
 		this.m_fireMainCyl = this.m_pilotStick.getRawButton(RobotMap.BTN_MAIN_CYL);
@@ -67,6 +69,11 @@ public class OperatorInterface extends Subsystem {
 	public boolean getFireExtCyl() {
 		return this.m_fireExtCyl;
 	}
+	
+	public boolean getClimbOn() {
+		return this.m_climbOn;
+	}
+	
 
 	@Override
 	protected void initDefaultCommand() {} // Not used

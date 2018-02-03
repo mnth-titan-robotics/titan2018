@@ -63,7 +63,7 @@ import edu.wpi.first.wpilibj.TimedRobot;
  * 			- retract if button 2 on the pilot joystick is pressed, regardless of 
  * 			  whether or not button 1 is pressed 
  * 			- stay retracted if no other button is pressed
- * 		The Climber motor should...
+ * 		The Climber motor should..
  * 			- turn on and stay on when button 0 on the pilot joystick is pressed
  * 			  and held
  * 			- turn off and stay off when button 0 on the pilot joystick is released
@@ -88,6 +88,7 @@ public class Robot extends TimedRobot {
 	private double m_rightCmd;
 	private boolean m_fireMainCyl;
 	private boolean m_fireExtCyl;
+	private boolean m_climbOn;
 	
 	// Declare robot subsystems
 	private DriveSystem m_driveSys;
@@ -183,6 +184,7 @@ public class Robot extends TimedRobot {
 		this.m_rightCmd = 0.0;
 		this.m_fireMainCyl = false;
 		this.m_fireExtCyl = false;
+		this.m_climbOn = false;
 		
 		// Reset subsystems
 		this.m_driveSys.reset();

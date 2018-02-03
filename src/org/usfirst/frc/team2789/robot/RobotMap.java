@@ -29,4 +29,9 @@ public class RobotMap {
 	public static final int BTN_MAIN_CYL = 3;
 	public static final int BTN_EXT_CYL_FWD = 1;
 	public static final int BTN_EXT_CYL_REV = 2;
+	public static final int BTN_CLIMB_ON = 0;
+	
+	//Climber motor channel
+	public static final int MTR_CLIMB = 1;
+	public static final double CLIMB_VAL = 1.0;
 }

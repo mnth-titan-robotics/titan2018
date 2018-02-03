@@ -11,6 +11,18 @@ public class Climber extends Subsystem {
 	private DoubleSolenoid.Value m_mainCylCmd;
 	private DoubleSolenoid.Value m_extCylCmd;
 	
+	//storage variable for climber motor
+	public static double m_climbOn;
+	private static double m_climbMtr;
+	
+	
+	//motor talon
+	private static final double TALON = m_climbMtr;
+
+	//setter method
+	void setClimbOn(boolean climbOn) {
+	}
+	
 	// DoubleSolenoids to control cylinders
 	private DoubleSolenoid m_mainCyl;
 	private DoubleSolenoid m_extCyl;
@@ -38,8 +50,20 @@ public class Climber extends Subsystem {
 		// Update actuators with commanded values
 		this.m_mainCyl.set(this.m_mainCylCmd);
 		this.m_extCyl.set(this.m_extCylCmd);
+		
+		if (this.m_climbMtr (RobotMap.CLIMB_VAL)); {
+			= true;
+		}
+		else(this.m_climbMtr(RobotMap.CLIMB_VAL)); {
+			= 0.0;
+		
 	}
 	
+	private boolean m_climbMtr(double climbVal) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 	public void fireMainCyl(boolean fire) {
 		this.m_mainCylCmd = fire ? DoubleSolenoid.Value.kForward : DoubleSolenoid.Value.kReverse;
 		
