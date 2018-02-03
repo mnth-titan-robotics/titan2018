@@ -54,8 +54,10 @@ public class Climber extends Subsystem {
 		if (this.m_climbMtr (RobotMap.CLIMB_VAL)); {
 			= true;
 		}
-		else(this.m_climbMtr(RobotMap.CLIMB_VAL)); {
-			= 0.0;
+		else if (this.m_climbMtr(RobotMap.CLIMB_VAL)); {
+			= false
+			return
+					this.m_climbMtr = 0.0;
 		
 	}
 	
