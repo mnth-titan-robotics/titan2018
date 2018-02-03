@@ -33,7 +33,6 @@ public class Robot extends TimedRobot {
 		this.m_opFace = new OperatorInterface();
 		this.m_climber = new Climber();
 		this.m_compressor = new Compressor();
-		
 	}
 
 	@Override
@@ -84,16 +83,11 @@ public class Robot extends TimedRobot {
 		// Update all sensor subsystems
 		this.m_opFace.update();
 		
-	
-		// Use climber command methods:
-		this.m_fireMainCyl = this.m_opFace.getFireMainCyl();
-		this.m_fireExtCyl = this.m_opFace.getFireExtCyl();
-		// Also see lines 16 and 17 where I created these variables. I
-		// forgot to leave a TODO to remind you guys to do this.
-		
 		// Get information from sensor subsystems
 		this.m_driveCommand = this.m_opFace.getDriveCmd();
 		this.m_turnCommand = this.m_opFace.getTurnCmd();
+		this.m_fireMainCyl = this.m_opFace.getFireMainCyl();
+		this.m_fireExtCyl = this.m_opFace.getFireExtCyl();
 		
 		// Calculations
 		this.m_leftCmd = -this.m_driveCommand + this.m_turnCommand;
@@ -102,33 +96,14 @@ public class Robot extends TimedRobot {
 		this.m_leftCmd = RobotHelper.limit(this.m_leftCmd, -1.0, 1.0);
 		this.m_rightCmd = RobotHelper.limit(this.m_rightCmd, -1.0, 1.0);
 		
-	
-		// Commands the climber:
+		// Set information for actuator subsystems
+		this.m_driveSys.setCommands(this.m_leftCmd, this.m_rightCmd);
 		this.m_climber.fireMainCyl(this.m_fireMainCyl);
 		this.m_climber.fireExtCyl(this.m_fireExtCyl);
 		
-		// Set information for actuator subsystems
-		this.m_driveSys.setCommands(this.m_leftCmd, this.m_rightCmd);
-		
 		// Update all actuator subsystems
 		this.m_driveSys.update();
-		
-		
-		// Updates climber:
 		this.m_climber.update();
-		// Why was your solution technically not wrong? In your attempt,
-		// You declared m_climber as an Object (see line 28), but constructed
-		// it as a Climber (see line 39). This is A TOTALLY VALID THING to do
-		// in Java and there are some special instances where it is desired.
-		// Usually not though because you want to be specific. When you declare
-		// m_climber as an Object, Java will try to use m_climber as an Object
-		// rather than as a Climber unless told specifically otherwise. This is
-		// why your solution of
-		//		((Climber) this.m_climber).update();
-		// is not technically wrong. The first statement in parentheses tells
-		// Java "Hey, use this object as though it were a Climber." and THEN
-		// it calls update. For future reference, this feature is called "type
-		// casting" and is a very powerful feature in object oriented programming.
 	}
 
 	public void reset() {
@@ -137,17 +112,15 @@ public class Robot extends TimedRobot {
 		this.m_turnCommand = 0.0;
 		this.m_leftCmd = 0.0;
 		this.m_rightCmd = 0.0;
+		this.m_fireMainCyl = false;
+		this.m_fireExtCyl = false;
 		
 		// Reset subsystems
 		this.m_driveSys.reset();
 		this.m_opFace.reset();
-		
-		
-		// resets climber:
 		this.m_climber.reset();
-		
 	
-		// Stops the compressor:
+		// Stop the compressor
 		this.m_compressor.stop();
 	}
 

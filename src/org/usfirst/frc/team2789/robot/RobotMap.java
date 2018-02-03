@@ -15,16 +15,17 @@ public class RobotMap {
 	public static final int DRIVE_AXIS = 1;
 	public static final int TURN_AXIS = 4;
 	
-	//Inverts motor direction
+	// Inverts motor direction
 	public static final boolean INVERT_LEFT = false;
 	public static final boolean INVERT_RIGHT = true;
 	
+	// Climber DoubleSolenoid channels
 	public static final int DS_MAIN_CYL_FWD=0;
 	public static final int DS_MAIN_CYL_REV=1;
 	public static final int DS_EXT_CYL_FWD=2;
 	public static final int DS_EXT_CYL_REV=3;
 	
-	//CLIMBER VALUES
+	// OperatorInterface Climber buttons
 	public static final int BTN_MAIN_CYL = 3;
 	public static final int BTN_EXT_CYL_FWD = 1;
 	public static final int BTN_EXT_CYL_REV = 2;
