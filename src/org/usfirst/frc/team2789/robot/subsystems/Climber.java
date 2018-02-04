@@ -12,16 +12,14 @@ public class Climber extends Subsystem {
 	private DoubleSolenoid.Value m_extCylCmd;
 	
 	//storage variable for climber motor
+	// TODO: m_climbon should not be a double
+	// Think about what it should be and fix it
 	public static double m_climbOn;
 	private static double m_climbMtr;
 	
-	
-	//motor talon
+	// TODO: look at the DriveSystem.java class
+	// to see how to set up a Talon
 	private static final double TALON = m_climbMtr;
-
-	//setter method
-	void setClimbOn(boolean climbOn) {
-	}
 	
 	// DoubleSolenoids to control cylinders
 	private DoubleSolenoid m_mainCyl;
@@ -51,6 +49,15 @@ public class Climber extends Subsystem {
 		this.m_mainCyl.set(this.m_mainCylCmd);
 		this.m_extCyl.set(this.m_extCylCmd);
 		
+		// TODO: Look at DriveSystem.java to see how to 
+		// command Talons.
+		// To help you with the way the code should be structured,
+		// try this:
+		//
+		// IF m_climbOn is true THEN
+		//      set m_climbMtr to RobotMap.CLIMB_VAL
+		// ELSE
+		//		set m_climbMtr to 0.0
 		if (this.m_climbMtr (RobotMap.CLIMB_VAL)); {
 			= true;
 		}
@@ -60,10 +67,10 @@ public class Climber extends Subsystem {
 					this.m_climbMtr = 0.0;
 		
 	}
-	
-	private boolean m_climbMtr(double climbVal) {
-		// TODO Auto-generated method stub
-		return false;
+		
+	// setter method
+	// TODO: fill this in
+	void setClimbOn(boolean climbOn) {
 	}
 
 	public void fireMainCyl(boolean fire) {

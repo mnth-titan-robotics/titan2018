@@ -15,18 +15,18 @@ import edu.wpi.first.wpilibj.TimedRobot;
  * out.
  * 
  * In Robot.java:
- * 		- create a storage variable for Climber motor named m_climbOn
+ * DONE - create a storage variable for Climber motor named m_climbOn
  * 			> You'll want to use a boolean as the storage variable.
  * 			  Think about why and write your answer at the bottom of
  * 			  this file.
- * 		- reset m_climbOn
+ * DONE	- reset m_climbOn
  * 		- get the appropriate value for m_climbOn from m_opFace
  * 		- set the Climber motor command
  * In RobotMap.java:
  * 		- create a constant for the Climber motor channel named MTR_CLIMB
- * 		- create a constant for the button on the pilot joystick for
+ * DONE	- create a constant for the button on the pilot joystick for
  * 		  running the Climber motor. Use button 0 and name it BTN_CLIMB_ON
- * 		- create a constant double for the value we will be telling the Climber
+ * DONE	- create a constant double for the value we will be telling the Climber
  * 		  motor to run. For now, set it to 1.0 and name it CLIMB_VAL
  * In Climber.java:
  * 		- create a storage variable for the Climber motor named m_climbOn
@@ -36,10 +36,11 @@ import edu.wpi.first.wpilibj.TimedRobot;
  * 		  name it setClimbOn(boolean climbOn)
  * 		- in update(), set m_climbMtr to RobotMap.CLIMB_VAL if m_climbOn is true.
  * 		  otherwise, set m_climbMtr to 0.0
- * In OperatorInterface.java:
- * 		- create a storage variable for the Climber motor named m_climbOn
- * 		- in update(), read button BTN_CLIMB_ON and set m_climbOn accordingly
- * 		- create a getter method for getting the climb command named
+ * DONE In OperatorInterface.java:
+ * DONE	- create a storage variable for the Climber motor named m_climbOn
+ * 		- reset m_climbOn
+ * DONE	- in update(), read button BTN_CLIMB_ON and set m_climbOn accordingly
+ * DONE	- create a getter method for getting the climb command named
  * 		  getClimbOn()
  * When you finish these steps, git commit and push.
  * 
@@ -203,6 +204,9 @@ public class Robot extends TimedRobot {
  * Why should the Climber motor storage variable be a boolean?
  * 
  * Your answer:
- * It should be a boolean because the rest of the climber mech uses boolean and we are not keeping complete control of it we are turning it off and on. 
+ * It should be a boolean because the rest of the climber mech uses boolean and we are not keeping complete control of it we are turning it off and on.
+ * 
+ * Close. Correct answer is that we want to use a boolean because we are only turning it off and on. What the rest of the climber uses should have
+ * no impact on what we choose to use for the motor.
  * 
  */
