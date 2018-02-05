@@ -9,17 +9,16 @@ public class Climber extends Subsystem {
 	
 	// Storage variables for piston commands
 	private DoubleSolenoid.Value m_mainCylCmd;
-	private DoubleSolenoid.Value m_extCylCmd;
+	private DoubleSolenoid.Value m_extCylCmd; 
 	
 	//storage variable for climber motor
 	// TODO: m_climbon should not be a double
 	// Think about what it should be and fix it
-	public static double m_climbOn;
-	private static double m_climbMtr;
+	public static boolean m_climbOn;
 	
 	// TODO: look at the DriveSystem.java class
 	// to see how to set up a Talon
-	private static final double TALON = m_climbMtr;
+		this.m_climbMtr = new Talon(RobotMap.MTR_CLIMB);
 	
 	// DoubleSolenoids to control cylinders
 	private DoubleSolenoid m_mainCyl;
@@ -58,9 +57,11 @@ public class Climber extends Subsystem {
 		//      set m_climbMtr to RobotMap.CLIMB_VAL
 		// ELSE
 		//		set m_climbMtr to 0.0
-		if (this.m_climbMtr (RobotMap.CLIMB_VAL)); {
-			= true;
-		}
+		
+		
+		
+		if (this.m_climbOn = true; 
+		
 		else if (this.m_climbMtr(RobotMap.CLIMB_VAL)); {
 			= false
 			return
@@ -70,33 +71,19 @@ public class Climber extends Subsystem {
 		
 	// setter method
 	// TODO: fill this in
-	void setClimbOn(boolean climbOn) {
+	public void setClimbOn(boolean climbOn) {
 	}
 
 	public void fireMainCyl(boolean fire) {
 		this.m_mainCylCmd = fire ? DoubleSolenoid.Value.kForward : DoubleSolenoid.Value.kReverse;
 		
-		// This does the same thing as all of this code:
-		//
-		// if(fire) {
-		//	 this.m_mainCylCmd= DoubleSolenoid.Value.kForward;
-		// }
-		// else {
-		//	 this.m_mainCylCmd= DoubleSolenoid.Value.kReverse;
-		// }
+		
 	}
 	
 	public void fireExtCyl(boolean fire) {
 		this.m_extCylCmd = fire ? DoubleSolenoid.Value.kForward : DoubleSolenoid.Value.kReverse;
 		
-		// This does the same thing as all of this code:
-		//
-		// if(fire) {
-		//	 this.m_extCylCmd= DoubleSolenoid.Value.kForward;
-		// }
-		// else {
-		//	this.m_extCylCmd= DoubleSolenoid.Value.kReverse;
-		// }
+		
 	}
 
 	@Override

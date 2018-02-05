@@ -32,8 +32,6 @@ public class RobotMap {
 	public static final int BTN_CLIMB_ON = 0;
 	
 	// Climber motor channel
-	// TODO: motor channel 1 is already assigned to TALON_FR
-	// Pick a different channel.
-	public static final int MTR_CLIMB = 1;
+	public static final int MTR_CLIMB = 4;
 	public static final double CLIMB_VAL = 1.0;
 }
