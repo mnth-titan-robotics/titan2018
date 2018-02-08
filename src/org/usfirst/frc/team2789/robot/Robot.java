@@ -90,6 +90,9 @@ public class Robot extends TimedRobot {
 	private boolean m_fireMainCyl;
 	private boolean m_fireExtCyl;
 	private boolean m_climbOn;
+	private boolean m_liftDown;
+	private boolean m_liftUp;
+	private double m_intakeCmd;
 	
 	// Declare robot subsystems
 	private DriveSystem m_driveSys;
@@ -160,6 +163,7 @@ public class Robot extends TimedRobot {
 		this.m_fireMainCyl = this.m_opFace.getFireMainCyl();
 		this.m_fireExtCyl = this.m_opFace.getFireExtCyl();
 		this.m_climbOn = this.m_opFace.getClimbOn();
+		this.m_intakeCmd = this.m_opFace.getintakeCmd();
 		
 		if(this.m_fireMainCyl) {
 			System.out.println("Fire main Cyl");
