@@ -32,6 +32,11 @@ public class RobotMap {
 	public static final int BTN_CLIMB_ON = 0;
 	
 	// Climber motor channel
-	public static final int MTR_CLIMB = 4;
+	public static final int MTR_CLIMB = 7;
 	public static final double CLIMB_VAL = 1.0;
+	
+	public static final int LIFT_MTR = 4;
+	public static final int INTAKE_LEFT = 5;
+	public static final int INTAKE_RIGHT = 6;
+	public static final double LIFT_POWER = 1.0;
 }

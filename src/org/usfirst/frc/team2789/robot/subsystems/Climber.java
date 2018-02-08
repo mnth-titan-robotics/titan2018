@@ -68,6 +68,7 @@ public class Climber extends Subsystem {
 		}
 		else {
 			this.m_mainCylCmd = DoubleSolenoid.Value.kReverse;
+		
 		}
 	}
 	//Ext
@@ -77,6 +78,7 @@ public class Climber extends Subsystem {
 		}
 		else {
 			this.m_extCylCmd = DoubleSolenoid.Value.kReverse;
+			System.out.println(m_extCylCmd);
 		}
 	}
 
