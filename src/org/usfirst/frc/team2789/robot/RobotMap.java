@@ -22,21 +22,23 @@ public class RobotMap {
 	// Climber DoubleSolenoid channels
 	public static final int DS_MAIN_CYL_FWD=0;
 	public static final int DS_MAIN_CYL_REV=1;
-	public static final int DS_EXT_CYL_FWD=2;
+	public static final int DS_EXT_CYL_FWD=7;
 	public static final int DS_EXT_CYL_REV=3;
 	
 	// OperatorInterface Climber buttons
-	public static final int BTN_MAIN_CYL = 3;
-	public static final int BTN_EXT_CYL_FWD = 1;
-	public static final int BTN_EXT_CYL_REV = 2;
-	public static final int BTN_CLIMB_ON = 0;
+	public static final int BTN_MAIN_CYL = 4;
+	public static final int BTN_EXT_CYL_FWD = 2;
+	public static final int BTN_EXT_CYL_REV = 3;
+	public static final int BTN_CLIMB_ON = 1;
 	
 	// Climber motor channel
 	public static final int MTR_CLIMB = 7;
 	public static final double CLIMB_VAL = 1.0;
 	
+	// Intake
 	public static final int LIFT_MTR = 4;
 	public static final int INTAKE_LEFT = 5;
 	public static final int INTAKE_RIGHT = 6;
 	public static final double LIFT_POWER = 1.0;
+	
 }

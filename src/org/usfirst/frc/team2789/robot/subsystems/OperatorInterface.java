@@ -52,12 +52,14 @@ public class OperatorInterface extends Subsystem {
 		// Retrieve climber pneumatic commands from joysticks
 		this.m_fireMainCyl = this.m_pilotStick.getRawButton(RobotMap.BTN_MAIN_CYL);
 		
+		if (this.m_pilotStick.getRawButton(RobotMap.BTN_EXT_CYL_FWD)) {
+			this.m_fireExtCyl= true;
+		}
+
 		if (this.m_pilotStick.getRawButton(RobotMap.BTN_EXT_CYL_REV)) {
 			this.m_fireExtCyl= false;
 		}
-		else if (this.m_pilotStick.getRawButton(RobotMap.BTN_EXT_CYL_FWD)) {
-			this.m_fireExtCyl= true;
-		}
+		
 		
 	}
 

@@ -180,7 +180,7 @@ public class Robot extends TimedRobot {
 		// Set information for actuator subsystems
 		this.m_driveSys.setCommands(this.m_leftCmd, this.m_rightCmd);
 		this.m_climber.fireMainCyl(this.m_fireMainCyl);
-		this.m_climber.fireExtCyl(this.m_fireExtCyl);
+		this.m_climber.fireExtCyl(true);
 		this.m_climber.setClimbOn(this.m_climbOn);
 		
 		// Update all actuator subsystems
@@ -199,6 +199,7 @@ public class Robot extends TimedRobot {
 		this.m_fireMainCyl = false;
 		this.m_fireExtCyl = false;
 		this.m_climbOn = false;
+		this.m_intakeCmd = 0.0;
 		
 		System.out.println(m_driveCommand);
 		System.out.println(m_turnCommand);
