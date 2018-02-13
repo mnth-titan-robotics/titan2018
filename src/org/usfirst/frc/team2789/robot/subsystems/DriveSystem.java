@@ -30,7 +30,7 @@ public class DriveSystem extends Subsystem {
 		this.m_talonBR.setInverted(RobotMap.INVERT_RIGHT);
 		this.m_talonFR.setInverted(RobotMap.INVERT_RIGHT);
 		
-		// Reset all values
+		// Reset storage variables
 		this.reset();
 	}
 	

@@ -8,14 +8,16 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Climber extends Subsystem {
 
-    // Storage variables for piston commands
+    // Storage variables
     private DoubleSolenoid.Value m_mainCylCmd;
     private DoubleSolenoid.Value m_extCylCmd;
     private boolean m_climbOn;
 
-    // DoubleSolenoids to control cylinders
+    // Climber pneumatics
     private DoubleSolenoid m_mainCyl;
     private DoubleSolenoid m_extCyl;
+    
+    // Climber motor
     private Talon m_climbMtr;
 
     public Climber() {
@@ -23,6 +25,7 @@ public class Climber extends Subsystem {
         this.m_mainCyl = new DoubleSolenoid(RobotMap.DS_CLIMBER_MAIN_FWD, RobotMap.DS_CLIMBER_MAIN_REV);
         this.m_extCyl = new DoubleSolenoid(RobotMap.DS_CLIMBER_EXT_FWD, RobotMap.DS_CLIMBER_EXT_REV);
 
+        // Construct climber Talon
         this.m_climbMtr = new Talon(RobotMap.TALON_CLIMBER);
 
         // Reset all values
@@ -30,7 +33,7 @@ public class Climber extends Subsystem {
     }
 
     public void reset() {
-        // Commands to retract
+        // Reset storage variables
         this.m_mainCylCmd = DoubleSolenoid.Value.kReverse;
         this.m_extCylCmd = DoubleSolenoid.Value.kReverse;
         this.m_climbOn = false;
@@ -41,7 +44,7 @@ public class Climber extends Subsystem {
         this.m_mainCyl.set(this.m_mainCylCmd);
         this.m_extCyl.set(this.m_extCylCmd);
 
-        // command Talons
+        // Update Talon
         if(this.m_climbOn) {
             this.m_climbMtr.set(RobotMap.CLIMBER_POWER);
         }

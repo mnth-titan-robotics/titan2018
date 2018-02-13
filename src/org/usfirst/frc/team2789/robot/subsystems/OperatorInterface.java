@@ -48,9 +48,8 @@ public class OperatorInterface extends Subsystem {
         // Retrieve axis values from joysticks
         this.m_driveCmd = this.m_pilotStick.getRawAxis(RobotMap.AXIS_PILOT_DRIVE);
         this.m_turnCmd = this.m_pilotStick.getRawAxis(RobotMap.AXIS_PILOT_TURN);
-        this.m_climbOn = this.m_pilotStick.getRawButton(RobotMap.BTN_PILOT_CLIMB_ON);
 
-        // Intake
+        // Intake roller command
         if(this.m_copilotStick.getRawButton(RobotMap.BTN_COPILOT_INTAKE_OFF)) {
             this.m_intakeCmd = 0.0;
         }
@@ -75,6 +74,9 @@ public class OperatorInterface extends Subsystem {
         if(this.m_pilotStick.getRawButton(RobotMap.BTN_PILOT_EXT_REV)) {
             this.m_fireExtCyl = false;
         }
+        
+        // Climber motor command
+        this.m_climbOn = this.m_pilotStick.getRawButton(RobotMap.BTN_PILOT_CLIMB_ON);
 
     }
 

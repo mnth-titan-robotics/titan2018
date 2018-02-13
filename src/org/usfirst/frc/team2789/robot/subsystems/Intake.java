@@ -7,19 +7,23 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Intake extends Subsystem {
 
+    // Storage variables
     private boolean m_liftDown;
     private boolean m_liftUp;
     private double m_intakeCmd;
 
+    // Motors
     private Talon m_liftMtr;
     private Talon m_intakeLeft;
     private Talon m_intakeRight;
 
     public Intake() {
+        // Construct motors
         this.m_liftMtr = new Talon(RobotMap.TALON_LIFT);
         this.m_intakeLeft = new Talon(RobotMap.TALON_INTAKE_LEFT);
         this.m_intakeRight = new Talon(RobotMap.TALON_INTAKE_RIGHT);
 
+        // Reset storage variables
         this.reset();
     }
 
@@ -30,18 +34,20 @@ public class Intake extends Subsystem {
     }
 
     public void update() {
-        if(m_liftUp && !m_liftDown) {
+        // Update lift output
+        if(this.m_liftUp && !this.m_liftDown) {
             this.m_liftMtr.set(RobotMap.LIFT_POWER);
         }
-        else if(m_liftDown && !m_liftUp) {
+        else if(this.m_liftDown && !this.m_liftUp) {
             this.m_liftMtr.set(-RobotMap.LIFT_POWER);
         }
         else {
             this.m_liftMtr.set(0.0);
         }
         
-        this.m_intakeLeft.set(m_intakeCmd);
-        this.m_intakeRight.set(-m_intakeCmd);
+        // Update intake output
+        this.m_intakeLeft.set(this.m_intakeCmd);
+        this.m_intakeRight.set(-this.m_intakeCmd);
     }
 
     public void setLiftUp(boolean liftUp) {
