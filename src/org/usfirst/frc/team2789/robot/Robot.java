@@ -3,6 +3,7 @@ package org.usfirst.frc.team2789.robot;
 import org.usfirst.frc.team2789.robot.subsystems.Climber;
 import org.usfirst.frc.team2789.robot.subsystems.DriveSystem;
 import org.usfirst.frc.team2789.robot.subsystems.OperatorInterface;
+import org.usfirst.frc.team2789.robot.subsystems.Intake;
 
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -25,6 +26,7 @@ public class Robot extends TimedRobot {
 	private OperatorInterface m_opFace;
 	private Climber m_climber;
 	private Compressor m_compressor;
+	private Intake m_intake;
 	
 	@Override
 	public void robotInit() {
@@ -33,6 +35,7 @@ public class Robot extends TimedRobot {
 		this.m_opFace = new OperatorInterface();
 		this.m_climber = new Climber();
 		this.m_compressor = new Compressor();
+		this.m_intake = new Intake();
 	}
 
 	@Override
@@ -108,10 +111,15 @@ public class Robot extends TimedRobot {
 		this.m_climber.fireMainCyl(this.m_fireMainCyl);
 		this.m_climber.fireExtCyl(true);
 		this.m_climber.setClimbOn(this.m_climbOn);
+		this.m_intake.setLiftUp(this.m_liftUp);
+		this.m_intake.setLiftDown(this.m_liftDown);
+		
+		
 		
 		// Update all actuator subsystems
 		this.m_driveSys.update();
 		this.m_climber.update();
+		this.m_intake.update();
 		
 		System.out.println(m_climber);
 	}
@@ -138,6 +146,7 @@ public class Robot extends TimedRobot {
 		this.m_driveSys.reset();
 		this.m_opFace.reset();
 		this.m_climber.reset();
+		this.m_intake.reset();
 	
 		System.out.println(m_driveSys);
 		System.out.println(m_opFace);
