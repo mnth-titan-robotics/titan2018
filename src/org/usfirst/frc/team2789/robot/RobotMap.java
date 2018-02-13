@@ -40,5 +40,11 @@ public class RobotMap {
 	public static final int INTAKE_LEFT = 5;
 	public static final int INTAKE_RIGHT = 6;
 	public static final double LIFT_POWER = 1.0;
+	public static final int INTAKE_IN = 5;
+	public static final int INTAKE_OUT = 2;
+	public static final int INTAKE_OFF = 7;
+	public static final int LIFT_DOWN = 3;
+	public static final int LIFT_UP = 6;
+	public static final double INTAKE_POWER = 1.0;
 	
 }

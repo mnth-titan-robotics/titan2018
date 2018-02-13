@@ -28,7 +28,7 @@ public class OperatorInterface extends Subsystem {
 	public OperatorInterface() {
 		// Create new joysticks
 		this.m_pilotStick = new Joystick (RobotMap.JOYSTICK_PILOT);
-		this.m_copilotStick =(new Joystick (RobotMap.JOYSTICK_COPILOT));
+		this.m_copilotStick = new Joystick (RobotMap.JOYSTICK_COPILOT);
 		
 		// Reset storage variables
 		this.reset();
@@ -47,7 +47,22 @@ public class OperatorInterface extends Subsystem {
 		this.m_driveCmd = this.m_pilotStick.getRawAxis(RobotMap.DRIVE_AXIS);
 		this.m_turnCmd = this.m_pilotStick.getRawAxis(RobotMap.TURN_AXIS);
 		this.m_climbOn = this.m_pilotStick.getRawButton(RobotMap.BTN_CLIMB_ON);
-		this.m_intakeCmd = this.m_copilotStick.getRawAxis(RobotMap.LIFT_MTR);
+		
+		//Intake 
+		if (this.m_copilotStick.getRawButton(RobotMap.INTAKE_OFF)) {
+			this.m_intakeCmd = 0.0;	
+		}
+		else if (this.m_copilotStick.getRawButton(RobotMap.INTAKE_OUT)) {
+			this.m_intakeCmd = (-RobotMap.INTAKE_POWER);
+		}
+		else if (Math.abs((this.m_copilotStick.getRawButton(RobotMap.INTAKE_IN)) {
+			this.m_intakeCmd = (RobotMap.INTAKE_POWER);
+		}
+		
+		//Intake
+		this.m_liftUp = this.m_copilotStick.getRawButton(RobotMap.LIFT_UP);
+		this.m_liftDown = Math.abs(this.m_copilotStick.getRawAxis(RobotMap.LIFT_DOWN))>0.5;
+		
 		
 		// Retrieve climber pneumatic commands from joysticks
 		this.m_fireMainCyl = this.m_pilotStick.getRawButton(RobotMap.BTN_MAIN_CYL);
@@ -59,6 +74,8 @@ public class OperatorInterface extends Subsystem {
 		if (this.m_pilotStick.getRawButton(RobotMap.BTN_EXT_CYL_REV)) {
 			this.m_fireExtCyl= false;
 		}
+		
+		
 		
 		
 	}
@@ -90,26 +107,6 @@ public class OperatorInterface extends Subsystem {
 	
 	@Override
 	protected void initDefaultCommand() {} // Not used
-	public boolean isM_liftDown() {
-		return m_liftDown;
-	}
-	public void setM_liftDown(boolean m_liftDown) {
-		this.m_liftDown = m_liftDown;
-	}
-	public boolean isM_liftUp() {
-		return m_liftUp;
-	}
-	public void setM_liftUp(boolean m_liftUp) {
-		this.m_liftUp = m_liftUp;
-	}
-
-	public Joystick getM_copilotStick() {
-		return m_copilotStick;
-	}
-
-	public void setM_copilotStick(Joystick m_copilotStick) {
-		this.m_copilotStick = m_copilotStick;
-	}
 }
 
 	
