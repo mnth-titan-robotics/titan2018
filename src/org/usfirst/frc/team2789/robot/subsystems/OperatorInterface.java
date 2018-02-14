@@ -92,7 +92,7 @@ public class OperatorInterface extends Subsystem {
         return this.m_climbOn;
     }
 
-    public double getintakeCmd() {
+    public double getIntakeCmd() {
         return this.m_intakeCmd;
     }
 

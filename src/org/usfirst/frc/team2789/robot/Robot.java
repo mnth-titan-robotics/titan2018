@@ -92,16 +92,11 @@ public class Robot extends TimedRobot {
 		this.m_fireMainCyl = this.m_opFace.getFireMainCyl();
 		this.m_fireExtCyl = this.m_opFace.getFireExtCyl();
 		this.m_climbOn = this.m_opFace.getClimbOn();
-		this.m_intakeCmd = this.m_opFace.getintakeCmd();
-		
-		if(this.m_fireMainCyl) {
-			System.out.println("Fire main Cyl");
-		}
+		this.m_intakeCmd = this.m_opFace.getIntakeCmd();
 		
 		// Calculations
 		this.m_leftCmd = -this.m_driveCommand + this.m_turnCommand;
 		this.m_rightCmd = -this.m_driveCommand - this.m_turnCommand;
-		
 		
 		this.m_leftCmd = RobotHelper.limit(this.m_leftCmd, -1.0, 1.0);
 		this.m_rightCmd = RobotHelper.limit(this.m_rightCmd, -1.0, 1.0);
@@ -109,19 +104,16 @@ public class Robot extends TimedRobot {
 		// Set information for actuator subsystems
 		this.m_driveSys.setCommands(this.m_leftCmd, this.m_rightCmd);
 		this.m_climber.fireMainCyl(this.m_fireMainCyl);
-		this.m_climber.fireExtCyl(true);
+		this.m_climber.fireExtCyl(this.m_fireExtCyl);
 		this.m_climber.setClimbOn(this.m_climbOn);
 		this.m_intake.setLiftUp(this.m_liftUp);
 		this.m_intake.setLiftDown(this.m_liftDown);
-		
-		
+		this.m_intake.setIntakeCmd(this.m_intakeCmd);
 		
 		// Update all actuator subsystems
 		this.m_driveSys.update();
 		this.m_climber.update();
 		this.m_intake.update();
-		
-		System.out.println(m_climber);
 	}
 
 	public void reset() {
@@ -135,26 +127,14 @@ public class Robot extends TimedRobot {
 		this.m_climbOn = false;
 		this.m_intakeCmd = 0.0;
 		
-		System.out.println(m_driveCommand);
-		System.out.println(m_turnCommand);
-		System.out.println(m_leftCmd);
-		System.out.println(m_rightCmd);
-		System.out.println(m_fireExtCyl);
-		System.out.println(m_climbOn);
-		
 		// Reset subsystems
 		this.m_driveSys.reset();
 		this.m_opFace.reset();
 		this.m_climber.reset();
 		this.m_intake.reset();
-	
-		System.out.println(m_driveSys);
-		System.out.println(m_opFace);
 		
 		// Stop the compressor
 		this.m_compressor.stop();
-		
-		System.out.println(m_compressor);
 	}
 
 	@Override
