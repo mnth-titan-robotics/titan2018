@@ -57,4 +57,8 @@ public class RobotMap {
 	// Intake Motor Outputs
 	public static final double LIFT_POWER           = 1.0;
 	public static final double INTAKE_POWER         = 1.0;
+	
+	//autonomous
+	public static final long AUTON_IN_MILLIS 		= 10000; 
+	public static final double AUTON_POWER			= 0.5;
 }
