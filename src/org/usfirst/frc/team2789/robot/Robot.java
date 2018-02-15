@@ -20,6 +20,7 @@ public class Robot extends TimedRobot {
 	private boolean m_liftDown;
 	private boolean m_liftUp;
 	private double m_intakeCmd;
+	private long m_autonStartTime;
 	
 	// Declare robot subsystems
 	private DriveSystem m_driveSys;
@@ -61,12 +62,19 @@ public class Robot extends TimedRobot {
 		
 		// Start the compressor
 		this.m_compressor.start();
+		
+		this.m_autonStartTime = System.currentTimeMillis();
 	}
 
 	@Override
 	public void autonomousPeriodic() {
-		// Command the drive system to do nothing
-		this.m_driveSys.setCommands(0.0,  0.0);
+		
+		if (System.currentTimeMillis() < this.m_autonStartTime + RobotMap.AUTON_IN_MILLIS) {
+			this.m_driveSys.setCommands(RobotMap.AUTON_POWER, RobotMap.AUTON_POWER);
+		}
+		else {
+			this.m_driveSys.setCommands(0.0, 0.0);
+		}
 		
 		// Update all actuator subsystems
 		this.m_driveSys.update();
@@ -128,6 +136,7 @@ public class Robot extends TimedRobot {
 		this.m_fireExtCyl = false;
 		this.m_climbOn = false;
 		this.m_intakeCmd = 0.0;
+		this.m_autonStartTime= 0;
 		
 		// Reset subsystems
 		this.m_driveSys.reset();
