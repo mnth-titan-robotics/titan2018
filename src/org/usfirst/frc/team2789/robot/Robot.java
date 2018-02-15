@@ -92,6 +92,8 @@ public class Robot extends TimedRobot {
 		this.m_fireMainCyl = this.m_opFace.getFireMainCyl();
 		this.m_fireExtCyl = this.m_opFace.getFireExtCyl();
 		this.m_climbOn = this.m_opFace.getClimbOn();
+		this.m_liftDown = this.m_opFace.getLiftDown();
+		this.m_liftUp = this.m_opFace.getLiftUp();
 		this.m_intakeCmd = this.m_opFace.getIntakeCmd();
 		
 		// Calculations
