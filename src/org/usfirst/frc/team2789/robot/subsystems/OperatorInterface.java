@@ -61,8 +61,8 @@ public class OperatorInterface extends Subsystem {
         }
 
         // Intake
-        this.m_liftDown = this.m_copilotStick.getRawButton(RobotMap.BTN_COPILOT_LIFT_UP);
-        this.m_liftUp = Math.abs(this.m_copilotStick.getRawAxis(RobotMap.AXIS_COPILOT_LIFT_DOWN)) > 0.5;
+        this.m_liftUp = this.m_copilotStick.getRawButton(RobotMap.BTN_COPILOT_LIFT_UP);
+        this.m_liftDown = Math.abs(this.m_copilotStick.getRawAxis(RobotMap.AXIS_COPILOT_LIFT_DOWN)) > 0.5;
 
         // Retrieve climber pneumatic commands from joysticks
         this.m_fireMainCyl = this.m_pilotStick.getRawButton(RobotMap.BTN_PILOT_MAIN);

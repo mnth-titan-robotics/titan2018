@@ -55,7 +55,7 @@ public class RobotMap {
 	// Climber Motor Output
 	public static final double CLIMBER_POWER        = 1.0;
 	// Intake Motor Outputs
-	public static final double LIFT_POWER           = 1.0;
+	public static final double LIFT_POWER           = 0.75;
 	public static final double INTAKE_POWER         = 1.0;
 	
 	//autonomous
