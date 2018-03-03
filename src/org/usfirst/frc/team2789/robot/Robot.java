@@ -17,9 +17,10 @@ public class Robot extends TimedRobot {
 	private boolean m_fireMainCyl;
 	private boolean m_fireExtCyl;
 	private boolean m_climbOn;
-	private boolean m_liftDown;
-	private boolean m_liftUp;
-	private boolean m_liftMax;
+//	private boolean m_liftDown;
+//	private boolean m_liftUp;
+//	private boolean m_liftMax;
+	private double m_liftCmd;
 	private double m_intakeCmd;
 	private long m_autonStartTime;
 	private boolean m_waitComplete;
@@ -107,9 +108,10 @@ public class Robot extends TimedRobot {
 		this.m_fireMainCyl = this.m_opFace.getFireMainCyl();
 		this.m_fireExtCyl = this.m_opFace.getFireExtCyl();
 		this.m_climbOn = this.m_opFace.getClimbOn();
-		this.m_liftDown = this.m_opFace.getLiftDown();
-		this.m_liftUp = this.m_opFace.getLiftUp();
-		this.m_liftMax = this.m_opFace.getLiftMax();
+		this.m_liftCmd = this.m_opFace.getLiftCmd();
+//		this.m_liftDown = this.m_opFace.getLiftDown();
+//		this.m_liftUp = this.m_opFace.getLiftUp();
+//		this.m_liftMax = this.m_opFace.getLiftMax();
 		this.m_intakeCmd = this.m_opFace.getIntakeCmd();
 		
 		// Calculations
@@ -124,9 +126,10 @@ public class Robot extends TimedRobot {
 		this.m_climber.fireMainCyl(this.m_fireMainCyl);
 		this.m_climber.fireExtCyl(this.m_fireExtCyl);
 		this.m_climber.setClimbOn(this.m_climbOn);
-		this.m_intake.setLiftUp(this.m_liftUp);
-		this.m_intake.setLiftDown(this.m_liftDown);
-		this.m_intake.setLiftMax(this.m_liftMax);
+		this.m_intake.setLiftCmd(this.m_liftCmd);
+//		this.m_intake.setLiftUp(this.m_liftUp);
+//		this.m_intake.setLiftDown(this.m_liftDown);
+//		this.m_intake.setLiftMax(this.m_liftMax);
 		this.m_intake.setIntakeCmd(this.m_intakeCmd);
 		
 		// Update all actuator subsystems
@@ -144,7 +147,8 @@ public class Robot extends TimedRobot {
 		this.m_fireMainCyl = false;
 		this.m_fireExtCyl = false;
 		this.m_climbOn = false;
-		this.m_liftMax = false;
+//		this.m_liftMax = false;
+		this.m_liftCmd = 0.0;
 		this.m_intakeCmd = 0.0;
 		this.m_autonStartTime= 0;
 		

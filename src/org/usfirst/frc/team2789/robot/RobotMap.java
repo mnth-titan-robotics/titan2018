@@ -41,12 +41,13 @@ public class RobotMap {
 	public static final int JOYSTICK_COPILOT        = 1;
 	// Intake Buttons
 	public static final int BTN_COPILOT_INTAKE_IN   = 5;
-	public static final int BTN_COPILOT_LIFT_UP     = 6;
+//	public static final int BTN_COPILOT_LIFT_UP     = 6;
 	public static final int BTN_COPILOT_INTAKE_OFF  = 7;
-	public static final int BTN_COPILOT_LIFT_UP_MAX = 1;
+//	public static final int BTN_COPILOT_LIFT_UP_MAX = 1;
 	// Intake Axes
     public static final int AXIS_COPILOT_INTAKE_OUT = 2;
-    public static final int AXIS_COPILOT_LIFT_DOWN  = 3;
+    public static final int AXIS_COPILOT_LIFT		= 5;
+//    public static final int AXIS_COPILOT_LIFT_DOWN  = 3;
     
 	
     // ===== Settings =====================================================
@@ -59,6 +60,7 @@ public class RobotMap {
 	public static final double LIFT_POWER           = 0.9;
 	public static final double INTAKE_POWER         = 1.0;
 	public static final double LIFT_FULL_POWER 		= 1.0;
+	public static final double LIFT_DOWN_POWER		= 0.5;
 	
 	//autonomous
 	public static final long AUTON_IN_MILLIS 		= 1300; 
