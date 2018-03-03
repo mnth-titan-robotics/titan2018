@@ -43,6 +43,7 @@ public class RobotMap {
 	public static final int BTN_COPILOT_INTAKE_IN   = 5;
 	public static final int BTN_COPILOT_LIFT_UP     = 6;
 	public static final int BTN_COPILOT_INTAKE_OFF  = 7;
+	public static final int BTN_COPILOT_LIFT_UP_MAX = 1;
 	// Intake Axes
     public static final int AXIS_COPILOT_INTAKE_OUT = 2;
     public static final int AXIS_COPILOT_LIFT_DOWN  = 3;
@@ -55,10 +56,12 @@ public class RobotMap {
 	// Climber Motor Output
 	public static final double CLIMBER_POWER        = 1.0;
 	// Intake Motor Outputs
-	public static final double LIFT_POWER           = 0.75;
+	public static final double LIFT_POWER           = 0.9;
 	public static final double INTAKE_POWER         = 1.0;
+	public static final double LIFT_FULL_POWER 		= 1.0;
 	
 	//autonomous
-	public static final long AUTON_IN_MILLIS 		= 10000; 
-	public static final double AUTON_POWER			= 0.5;
+	public static final long AUTON_IN_MILLIS 		= 1300; 
+	public static final double AUTON_POWER			= 0.7;
+	public static final long AUTON_WAIT_MILLIS		= 5000;
 }

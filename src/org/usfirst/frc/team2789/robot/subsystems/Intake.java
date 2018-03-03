@@ -9,6 +9,7 @@ public class Intake extends Subsystem {
 
     // Storage variables
     private boolean m_liftDown;
+    private boolean m_liftMax;
     private boolean m_liftUp;
     private double m_intakeCmd;
 
@@ -31,6 +32,7 @@ public class Intake extends Subsystem {
         this.m_liftDown = false;
         this.m_liftUp = false;
         this.m_intakeCmd = 0.0;
+        this.m_liftMax = false;
     }
 
     public void update() {
@@ -40,6 +42,9 @@ public class Intake extends Subsystem {
         }
         else if(this.m_liftDown && !this.m_liftUp) {
             this.m_liftMtr.set(-RobotMap.LIFT_POWER);
+        }
+        else if(this.m_liftMax && !this.m_liftUp && !m_liftDown) {
+        	this.m_liftMtr.set(RobotMap.LIFT_FULL_POWER);
         }
         else {
             this.m_liftMtr.set(0.0);
@@ -52,6 +57,10 @@ public class Intake extends Subsystem {
 
     public void setLiftUp(boolean liftUp) {
         this.m_liftUp = liftUp;
+    }
+    
+    public void setLiftMax(boolean liftMax) {
+    	this.m_liftMax = liftMax;
     }
 
     public void setLiftDown(boolean liftDown) {

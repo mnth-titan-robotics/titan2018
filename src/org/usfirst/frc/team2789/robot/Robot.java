@@ -19,8 +19,10 @@ public class Robot extends TimedRobot {
 	private boolean m_climbOn;
 	private boolean m_liftDown;
 	private boolean m_liftUp;
+	private boolean m_liftMax;
 	private double m_intakeCmd;
 	private long m_autonStartTime;
+	private boolean m_waitComplete;
 	
 	// Declare robot subsystems
 	private DriveSystem m_driveSys;
@@ -62,14 +64,19 @@ public class Robot extends TimedRobot {
 		
 		// Start the compressor
 		this.m_compressor.start();
+		this.m_waitComplete = false;
 		
 		this.m_autonStartTime = System.currentTimeMillis();
 	}
 
 	@Override
 	public void autonomousPeriodic() {
+		if((System.currentTimeMillis() >= this.m_autonStartTime + RobotMap.AUTON_WAIT_MILLIS) && !this.m_waitComplete) {
+			this.m_waitComplete = true;
+			this.m_autonStartTime = System.currentTimeMillis();
+		}
 		
-		if (System.currentTimeMillis() < this.m_autonStartTime + RobotMap.AUTON_IN_MILLIS) {
+		if ((System.currentTimeMillis() < this.m_autonStartTime + RobotMap.AUTON_IN_MILLIS) && this.m_waitComplete) {
 			this.m_driveSys.setCommands(RobotMap.AUTON_POWER, RobotMap.AUTON_POWER);
 		}
 		else {
@@ -102,6 +109,7 @@ public class Robot extends TimedRobot {
 		this.m_climbOn = this.m_opFace.getClimbOn();
 		this.m_liftDown = this.m_opFace.getLiftDown();
 		this.m_liftUp = this.m_opFace.getLiftUp();
+		this.m_liftMax = this.m_opFace.getLiftMax();
 		this.m_intakeCmd = this.m_opFace.getIntakeCmd();
 		
 		// Calculations
@@ -118,6 +126,7 @@ public class Robot extends TimedRobot {
 		this.m_climber.setClimbOn(this.m_climbOn);
 		this.m_intake.setLiftUp(this.m_liftUp);
 		this.m_intake.setLiftDown(this.m_liftDown);
+		this.m_intake.setLiftMax(this.m_liftMax);
 		this.m_intake.setIntakeCmd(this.m_intakeCmd);
 		
 		// Update all actuator subsystems
@@ -135,6 +144,7 @@ public class Robot extends TimedRobot {
 		this.m_fireMainCyl = false;
 		this.m_fireExtCyl = false;
 		this.m_climbOn = false;
+		this.m_liftMax = false;
 		this.m_intakeCmd = 0.0;
 		this.m_autonStartTime= 0;
 		

@@ -20,6 +20,7 @@ public class OperatorInterface extends Subsystem {
     private boolean m_liftDown;
     private boolean m_liftUp;
     private double m_intakeCmd;
+    private boolean m_liftMax;
 
     // Joystick objects
     private Joystick m_pilotStick;
@@ -42,6 +43,7 @@ public class OperatorInterface extends Subsystem {
         this.m_intakeCmd = 0.0;
         this.m_liftDown = false;
         this.m_liftUp = false;
+        this.m_liftMax = false;
     }
 
     public void update() {
@@ -63,6 +65,7 @@ public class OperatorInterface extends Subsystem {
         // Intake
         this.m_liftUp = this.m_copilotStick.getRawButton(RobotMap.BTN_COPILOT_LIFT_UP);
         this.m_liftDown = Math.abs(this.m_copilotStick.getRawAxis(RobotMap.AXIS_COPILOT_LIFT_DOWN)) > 0.5;
+        this.m_liftMax = this.m_copilotStick.getRawButton(RobotMap.BTN_COPILOT_LIFT_UP_MAX);
 
         // Retrieve climber pneumatic commands from joysticks
         this.m_fireMainCyl = this.m_pilotStick.getRawButton(RobotMap.BTN_PILOT_MAIN);
@@ -102,6 +105,10 @@ public class OperatorInterface extends Subsystem {
 
     public boolean getLiftDown() {
         return this.m_liftDown;
+    }
+    
+    public boolean getLiftMax() {
+    	return this.m_liftMax;
     }
 
     public double getDriveCmd() {
