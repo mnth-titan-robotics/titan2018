@@ -10,6 +10,7 @@ public class OperatorInterface extends Subsystem {
     // DriveSystem Storage variables
     private double m_driveCmd;
     private double m_turnCmd;
+    
 
     // Climber Storage Variables:
     private boolean m_fireMainCyl;
@@ -17,12 +18,10 @@ public class OperatorInterface extends Subsystem {
     private boolean m_climbOn;
 
     // Intake Storage Variables:
-//    private boolean m_liftDown;
-//    private boolean m_liftUp;
+    private boolean m_liftDown;
+    private boolean m_liftUp;
     private double m_intakeCmd;
-    private double m_liftCmd;
-//    private boolean m_liftMax;
-
+    
     // Joystick objects
     private Joystick m_pilotStick;
     private Joystick m_copilotStick;
@@ -42,10 +41,8 @@ public class OperatorInterface extends Subsystem {
         this.m_fireExtCyl = false;
         this.m_fireMainCyl = false;
         this.m_intakeCmd = 0.0;
-        this.m_liftCmd = 0.0;
-//        this.m_liftDown = false;
-//        this.m_liftUp = false;
-//        this.m_liftMax = false;
+        this.m_liftDown = false;
+        this.m_liftUp = false;
     }
 
     public void update() {
@@ -65,10 +62,8 @@ public class OperatorInterface extends Subsystem {
         }
 
         // Intake
-//        this.m_liftUp = this.m_copilotStick.getRawButton(RobotMap.BTN_COPILOT_LIFT_UP);
-//        this.m_liftDown = Math.abs(this.m_copilotStick.getRawAxis(RobotMap.AXIS_COPILOT_LIFT_DOWN)) > 0.5;
-//        this.m_liftMax = this.m_copilotStick.getRawButton(RobotMap.BTN_COPILOT_LIFT_UP_MAX);
-        this.m_liftCmd = this.m_copilotStick.getRawAxis(RobotMap.AXIS_COPILOT_LIFT);
+        this.m_liftUp = this.m_copilotStick.getRawButton(RobotMap.BTN_COPILOT_LIFT_UP);
+        this.m_liftDown = Math.abs(this.m_copilotStick.getRawAxis(RobotMap.AXIS_COPILOT_LIFT_DOWN)) > 0.5;
 
         // Retrieve climber pneumatic commands from joysticks
         this.m_fireMainCyl = this.m_pilotStick.getRawButton(RobotMap.BTN_PILOT_MAIN);
@@ -82,7 +77,6 @@ public class OperatorInterface extends Subsystem {
         }
         
         // Climber motor command
-        this.m_climbOn = this.m_pilotStick.getRawButton(RobotMap.BTN_PILOT_CLIMB_ON);
 
     }
 
@@ -102,21 +96,16 @@ public class OperatorInterface extends Subsystem {
         return this.m_intakeCmd;
     }
     
-    public double getLiftCmd() {
-    	return this.m_liftCmd;
+    public boolean getLiftUp() {
+    	
+        return this.m_liftUp;
     }
 
-//    public boolean getLiftUp() {
-//        return this.m_liftUp;
-//    }
-//
-//    public boolean getLiftDown() {
-//        return this.m_liftDown;
-//    }
-//    
-//    public boolean getLiftMax() {
-//    	return this.m_liftMax;
-//    }
+    public boolean getLiftDown() {
+        return this.m_liftDown;
+    }
+    
+
 
     public double getDriveCmd() {
         return this.m_driveCmd;

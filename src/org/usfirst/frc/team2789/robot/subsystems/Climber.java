@@ -18,15 +18,14 @@ public class Climber extends Subsystem {
     private DoubleSolenoid m_extCyl;
     
     // Climber motor
-    private Talon m_climbMtr;
+  
 
     public Climber() {
         // Construct DoubleSolenoids with corresponding channels
         this.m_mainCyl = new DoubleSolenoid(RobotMap.DS_CLIMBER_MAIN_FWD, RobotMap.DS_CLIMBER_MAIN_REV);
         this.m_extCyl = new DoubleSolenoid(RobotMap.DS_CLIMBER_EXT_FWD, RobotMap.DS_CLIMBER_EXT_REV);
 
-        // Construct climber Talon
-        this.m_climbMtr = new Talon(RobotMap.TALON_CLIMBER);
+
 
         // Reset all values
         this.reset();
@@ -45,12 +44,8 @@ public class Climber extends Subsystem {
         this.m_extCyl.set(this.m_extCylCmd);
 
         // Update Talon
-        if(this.m_climbOn) {
-            this.m_climbMtr.set(RobotMap.CLIMBER_POWER);
-        }
-        else {
-            this.m_climbMtr.set(0.0);
-        }
+     
+        
 
     }
 

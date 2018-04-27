@@ -8,11 +8,10 @@ public class RobotMap {
 	public static final int TALON_DRIVE_BL          = 2;
 	public static final int TALON_DRIVE_BR          = 3;
 	// Intake
-	public static final int TALON_LIFT              = 4;
+	public static final int TALON_LIFT              = 7;
     public static final int TALON_INTAKE_LEFT       = 5;
     public static final int TALON_INTAKE_RIGHT      = 6;
     // Climber
-    public static final int TALON_CLIMBER           = 7;
 	
     
     // ===== Pneumatic Channels ===========================================
@@ -21,6 +20,13 @@ public class RobotMap {
     public static final int DS_CLIMBER_MAIN_REV     = 1;
     public static final int DS_CLIMBER_EXT_FWD      = 2;
     public static final int DS_CLIMBER_EXT_REV      = 3;
+    //Intake
+    //public static final int DS_LIFT_MAIN_FWD      = 
+    //public static final int DS_LIFT_MAIN_REV      =
+    //public static final int DS_LIFT_MAIN_2_FWD    =
+    //public static final int DS_LIFT_MAIN_2_REV    =
+    
+    
     
     
     // ===== Pilot Controller =============================================
@@ -41,13 +47,11 @@ public class RobotMap {
 	public static final int JOYSTICK_COPILOT        = 1;
 	// Intake Buttons
 	public static final int BTN_COPILOT_INTAKE_IN   = 5;
-//	public static final int BTN_COPILOT_LIFT_UP     = 6;
+	public static final int BTN_COPILOT_LIFT_UP     = 6;
 	public static final int BTN_COPILOT_INTAKE_OFF  = 7;
-//	public static final int BTN_COPILOT_LIFT_UP_MAX = 1;
 	// Intake Axes
     public static final int AXIS_COPILOT_INTAKE_OUT = 2;
-    public static final int AXIS_COPILOT_LIFT		= 5;
-//    public static final int AXIS_COPILOT_LIFT_DOWN  = 3;
+    public static final int AXIS_COPILOT_LIFT_DOWN  = 3;
     
 	
     // ===== Settings =====================================================
@@ -63,7 +67,7 @@ public class RobotMap {
 	public static final double LIFT_DOWN_POWER		= 0.5;
 	
 	//autonomous
-	public static final long AUTON_IN_MILLIS 		= 1300; 
+	public static final double AUTON_IN_MILLIS 		= 1.2; 
 	public static final double AUTON_POWER			= 0.7;
-	public static final long AUTON_WAIT_MILLIS		= 5000;
+	public static final double AUTON_WAIT_MILLIS	= 2.0;
 }
