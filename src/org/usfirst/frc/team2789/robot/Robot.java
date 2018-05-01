@@ -246,16 +246,3 @@ public class Robot extends TimedRobot {
 	public void testPeriodic() {
 	}
 }
-
-/**
- * Why should the Climber motor storage variable be a boolean?
- * 
- * Your answer: It should be a boolean because the rest of the climber mech uses
- * boolean and we are not keeping complete control of it we are turning it off
- * and on.
- * 
- * Close. Correct answer is that we want to use a boolean because we are only
- * turning it off and on. What the rest of the climber uses should have no
- * impact on what we choose to use for the motor.
- * 
- */
